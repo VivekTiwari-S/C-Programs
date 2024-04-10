@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int guess, number, attempts = 3;
+    srand(time(0));
+    number = rand() % 10 + 1;
+    
+    printf("Guess a number between 1 and 10.\n");
+    // printf("%d", number);
+    
+    while (attempts > 0) {
+        printf("Attempts left: %d\n", attempts);
+        printf("Enter your guess: ");
+        scanf("%d", &guess);
+        
+        if (guess == number) {
+            printf("Congratulations! You guessed the number.\n");
+            break;
+        } else if (guess < number) {
+            printf("Too low. Try again.\n");
+        } else {
+            printf("Too high. Try again.\n");
+        }
+        
+        attempts--;
+    }
+    
+    if (attempts == 0) {
+        printf("Sorry, you ran out of attempts. The number was %d.\n", number);
+    }
+    
+    return 0;
+}
+
+
+# Pattern
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() 
+{
+
+    int n;
+    scanf("%d", &n);
+  	
+    int arr[2*n-1][2*n-1];
+
+    for (int j = 0; j < n; j++){
+        for (int i = j; i <= 2*n - 2 - j; i++){
+            for (int k = j; k <= 2*n - 2 - j; k++){
+                arr[i][k] = n - j;
+            }
+        }
+    }
+     
+    for (int i = 0; i < 2*n - 1; i++){
+        for (int j = 0; j < 2*n -1; j++){
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
